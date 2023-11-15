@@ -1,15 +1,8 @@
-import os
+from pathlib import Path
 
-__location__ = os.path.realpath(
-    os.path.join(
-        os.getcwd(), os.path.dirname(__file__)
-    )
-)
-with open(os.path.join(__location__, 'day7.input')) as input_file:
-    input_data = [
-        line.strip()
-        for line in input_file.readlines()
-    ]
+INPUT_FILE = Path(__file__).resolve().parent / "day7.input"
+with open(INPUT_FILE) as input_file:
+    input_data = [line.strip() for line in input_file.readlines()]
 
 current_path = ''
 tree = {}
@@ -21,7 +14,7 @@ for line in input_data:
             current_path = folder
 
         elif folder == '..':
-            current_path = current_path[:current_path.rindex('/')]
+            current_path = current_path[: current_path.rindex('/')]
 
         else:
             current_path += current_path if current_path == '/' else f'/{current_path}'

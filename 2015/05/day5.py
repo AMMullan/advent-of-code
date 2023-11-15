@@ -1,47 +1,42 @@
 # https://adventofcode.com/2015/day/5
-import os
+from pathlib import Path
+
+INPUT_FILE = Path(__file__).resolve().parent / "day5.input"
 
 
 def has_subsequent_doubles(input_string):
-    for i in range(len(input_string) - 1):
-        if input_string[i] == input_string[i + 1]:
-            return True
-    return False
+    return any(
+        input_string[i] == input_string[i + 1] for i in range(len(input_string) - 1)
+    )
 
 
 def has_forbidden(input_string):
-    return any(
-        bs in input_string
-        for bs in [
-            'ab',
-            'cd',
-            'pq',
-            'xy'
-        ]
-    )
+    return any(bs in input_string for bs in ['ab', 'cd', 'pq', 'xy'])
 
 
-__location__ = os.path.realpath(
-    os.path.join(
-        os.getcwd(), os.path.dirname(__file__)
-    )
-)
-with open(os.path.join(__location__, 'day5.input')) as input_file:
-    input_data = [
-        line.strip()
-        for line in input_file.readlines()
-    ]
+def has_non_overlapping_repeats(input_string):
+    pairs = [input_string[i : i + 2] for i in range(len(input_string) - 1)]
+    seen = set()
 
-day1_items = 0
+    for i, pair in enumerate(pairs):
+        if pair in seen:
+            # Ensure the found repeat is not overlapping
+            previous_index = pairs.index(pair)
+            if i - previous_index > 1:
+                return True
+        else:
+            seen.add(pair)
+
+    return False
+
+
+with open(INPUT_FILE) as input_file:
+    input_data = [line.strip() for line in input_file.readlines()]
+
+part1_answer = 0
 for input_item in input_data:
-    vowel_count = sum(
-        1
-        for vowel in input_item
-        if vowel in 'aeiou'
-    )
-
     # Ignore words without at least 3 vowels
-    if vowel_count < 3:
+    if sum(vowel in 'aeiou' for vowel in input_item) < 3:
         continue
 
     # Ignore if has no doubles
@@ -52,6 +47,23 @@ for input_item in input_data:
     if has_forbidden(input_item):
         continue
 
-    day1_items += 1
+    part1_answer += 1
 
-print('Part 1:', day1_items)
+print('Part 1:', part1_answer)
+
+
+part2_answer = 0
+for input_item in input_data:
+    if not has_non_overlapping_repeats(input_item):
+        continue
+
+    thruples = [
+        [input_item[i], input_item[i + 1], input_item[i + 2]]
+        for i in range(len(input_item) - 2)
+    ]
+
+    nice = any(item[0] == item[2] for item in thruples)
+    if nice:
+        part2_answer += 1
+
+print('Part 1:', part2_answer)

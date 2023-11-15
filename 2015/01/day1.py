@@ -1,6 +1,9 @@
 # https://adventofcode.com/2015/day/1
+from pathlib import Path
 
-with open('day1.input') as input_file:
+INPUT_FILE = Path(__file__).resolve().parent / "day1.input"
+
+with open(INPUT_FILE) as input_file:
     input_data = input_file.read().strip()
 
 part_1 = 0

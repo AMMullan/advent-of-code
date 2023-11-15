@@ -9,9 +9,9 @@ def get_stuffer(zero_count=5):
     current_num = 0
     while True:
         result = hashlib.md5(f'{input_data}{str(current_num)}'.encode())
-        hex = result.hexdigest()
+        hex_ = result.hexdigest()
 
-        if hex.startswith('0' * zero_count):
+        if hex_.startswith('0' * zero_count):
             return current_num
 
         current_num += 1

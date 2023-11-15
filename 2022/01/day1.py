@@ -1,15 +1,12 @@
-import os
+# https://adventofcode.com/2022/day/1
 
-__location__ = os.path.realpath(
-    os.path.join(
-        os.getcwd(), os.path.dirname(__file__)
-    )
-)
-with open(os.path.join(__location__, 'day1.input')) as input_file:
-    input_data = [
-        line.strip()
-        for line in input_file.readlines()
-    ] + ['']  # Ensure there's a last empty line
+from pathlib import Path
+
+INPUT_FILE = Path(__file__).resolve().parent / "day1.input"
+with open(INPUT_FILE) as input_file:
+    input_data = [line.strip() for line in input_file.readlines()] + [
+        ''
+    ]  # Ensure there's a last empty line
 
 most_calories = 0
 top_3 = []

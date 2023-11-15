@@ -1,16 +1,11 @@
-import os
-import re
+# https://adventofcode.com/2022/day/2
 
-__location__ = os.path.realpath(
-    os.path.join(
-        os.getcwd(), os.path.dirname(__file__)
-    )
-)
-with open(os.path.join(__location__, 'day2.input')) as input_file:
-    input_data = [
-        line.strip().split()
-        for line in input_file.readlines()
-    ]
+import re
+from pathlib import Path
+
+INPUT_FILE = Path(__file__).resolve().parent / "day2.input"
+with open(INPUT_FILE) as input_file:
+    input_data = [line.strip().split() for line in input_file.readlines()]
 
 
 def translate(round):
@@ -26,11 +21,7 @@ def translate(round):
     return [first, second]
 
 
-points = {
-    'Rock': 1,
-    'Paper': 2,
-    'Scissors': 3
-}
+points = {'Rock': 1, 'Paper': 2, 'Scissors': 3}
 
 part1_total = 0
 part2_total = 0
@@ -45,9 +36,9 @@ for round in input_data:
 
     # I Win!
     elif (
-        (me == 'Rock' and opponent == 'Scissors') or
-        (me == 'Scissors' and opponent == 'Paper') or
-        (me == 'Paper' and opponent == 'Rock')
+        (me == 'Rock' and opponent == 'Scissors')
+        or (me == 'Scissors' and opponent == 'Paper')
+        or (me == 'Paper' and opponent == 'Rock')
     ):
         part1_total += 6
 

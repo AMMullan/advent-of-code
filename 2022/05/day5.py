@@ -1,16 +1,9 @@
-import os
 from collections import deque
+from pathlib import Path
 
-__location__ = os.path.realpath(
-    os.path.join(
-        os.getcwd(), os.path.dirname(__file__)
-    )
-)
-with open(os.path.join(__location__, 'day5.input')) as input_file:
-    input_data = [
-        line.strip()
-        for line in input_file.readlines()
-    ][10:]
+INPUT_FILE = Path(__file__).resolve().parent / "day5.input"
+with open(INPUT_FILE) as input_file:
+    input_data = [line.strip() for line in input_file.readlines()][10:]
 
 for part in ['1', '2']:
     cargo = [
@@ -22,7 +15,7 @@ for part in ['1', '2']:
         deque(['Z', 'G', 'J', 'P', 'Q', 'D', 'L', 'W']),
         deque(['H', 'R', 'F', 'T', 'Z', 'P']),
         deque(['G', 'M', 'V', 'L']),
-        deque(['J', 'R', 'Q', 'F', 'P', 'G', 'B', 'C'])
+        deque(['J', 'R', 'Q', 'F', 'P', 'G', 'B', 'C']),
     ]
 
     for instruction in input_data:
@@ -37,7 +30,7 @@ for part in ['1', '2']:
                 removed = cargo[origin].popleft()
                 cargo[target].appendleft(removed)
         elif part == '2':
-            move_items = list(cargo[origin])[0:count]
+            move_items = list(cargo[origin])[:count]
             while count:
                 count -= 1
                 cargo[origin].popleft()
