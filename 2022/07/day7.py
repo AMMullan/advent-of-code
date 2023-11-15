@@ -1,3 +1,9 @@
+# https://adventofcode.com/2022/day/7
+
+#
+# WIP
+#
+
 from pathlib import Path
 
 INPUT_FILE = Path(__file__).resolve().parent / "day7.input"
@@ -25,6 +31,7 @@ for line in input_data:
     elif line[0].isdigit():
         tree[current_path].append(int(line.split()[0]))
 
+print(tree)
 tree_sum = {}
 # Create sum for each directory
 for key1 in tree:
@@ -34,4 +41,4 @@ for key1 in tree:
             dir_total += sum(tree[key2])
     tree_sum[key1] = dir_total
 
-print(tree_sum)
+print(dir_total)
