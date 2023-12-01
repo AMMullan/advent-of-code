@@ -9,27 +9,26 @@ with open(INPUT_FILE) as input_file:
 
 
 def sum_integers(data, ignore_red=False):
-    total = 0
+    def recurse(json_data):
+        if isinstance(json_data, dict):  # If data is a dictionary
+            if ignore_red and "red" in json_data.values():
+                return 0
 
-    if isinstance(data, dict):  # If data is a dictionary
-        if ignore_red and "red" in data.values():
-            return total
+            return sum(map(recurse, json_data.values()))
 
-        for value in data.values():
-            total += sum_integers(value, ignore_red)  # Recursive call
+        elif isinstance(json_data, list):  # If data is a list
+            return sum(map(recurse, json_data))
 
-    elif isinstance(data, list):  # If data is a list
-        for item in data:
-            total += sum_integers(item, ignore_red)  # Recursive call
+        elif isinstance(json_data, int):  # If data is an integer
+            return json_data
 
-    elif isinstance(data, int):  # If data is an integer
-        total = data
+        return 0
 
-    return total
+    return recurse(data)
 
 
 part1 = sum_integers(input_data)
-print(part1)
+print(f'{part1=}')
 
 part2 = sum_integers(input_data, True)
-print(part2)
+print(f'{part2=}')
