@@ -28,15 +28,12 @@ for line in input_data:
 def get_most_happy(guests, happiness):
     best = 0
     for perm in itertools.permutations(guests):
-        h = 0
-        for i in range(len(perm)):
-            first = perm[i]
-            second = perm[(i + 1) % len(perm)]
-            second_rev = perm[(i - 1) % len(perm)]
-
-            h += happiness[(first, second)]
-            h += happiness[(first, second_rev)]
-
+        h = sum(
+            happiness[(first, second)] + happiness[(first, second_rev)]
+            for first, second, second_rev in zip(
+                perm, perm[1:] + (perm[0],), (perm[-1],) + perm[:-1]
+            )
+        )
         best = max(best, h)
 
     return best
