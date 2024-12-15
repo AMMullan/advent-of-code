@@ -1,7 +1,9 @@
 # https://adventofcode.com/2022/day/2
 
 import itertools
-from pathlib import Path
+
+from aoc import get_input_data
+from registry import register
 
 
 def generate_combinations(input_list: list) -> list:
@@ -25,17 +27,23 @@ def is_safe(levels: list[int]) -> bool:
     return True
 
 
-def part1(input_data) -> int:
+@register(year=2024, day=2, part=1)
+def solve_part1(context: dict) -> None:
+    input_data = get_input_data(context).splitlines()
+
     safe = 0
     for report in input_data:
         levels = [int(level) for level in report.split()]
         if is_safe(levels):
             safe += 1
 
-    return safe
+    print(f"Part 1: {safe}")
 
 
-def part2(input_data) -> int:
+@register(year=2024, day=2, part=2)
+def solve_part2(context: dict) -> None:
+    input_data = get_input_data(context).splitlines()
+
     safe = 0
     for report in input_data:
         levels = [int(level) for level in report.split()]
@@ -44,13 +52,4 @@ def part2(input_data) -> int:
         elif any(is_safe(new_list) for new_list in generate_combinations(levels)):
             safe += 1
 
-    return safe
-
-
-if __name__ == "__main__":
-    INPUT_FILE = Path("day2.input")
-    with open(INPUT_FILE) as input_file:
-        input_data = [line.strip() for line in input_file.readlines()]
-
-    print(f"Part 1: {part1(input_data)}")
-    print(f"Part 2: {part2(input_data)}")
+    print(f"Part 2: {safe}")

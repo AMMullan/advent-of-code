@@ -1,9 +1,9 @@
 # https://adventofcode.com/2015/day/14
 
-from pathlib import Path
 from typing import NamedTuple
 
-INPUT_FILE = Path(__file__).resolve().parent / "day14.input"
+from aoc import get_input_data
+from registry import register
 
 END_TIME = 2503
 
@@ -49,13 +49,26 @@ def calculate_reindeer_points(reindeers: list[Reindeer]) -> int:
     return max(scores)
 
 
-with open(INPUT_FILE) as input_file:
-    input_data = [line.strip().split() for line in input_file.readlines()]
+@register(year=2015, day=14, part=1)
+def solve_part1(context: dict) -> None:
+    input_data = [line.split() for line in get_input_data(context).splitlines()]
+
     reindeers = [
         Reindeer(reindeer[0], int(reindeer[3]), int(reindeer[6]), int(reindeer[-2]))
         for reindeer in input_data
     ]
     most_distance = calculate_reindeer_speed(reindeers)
+    print(f"Part 1: {most_distance}")
+
+
+@register(year=2015, day=14, part=2)
+def solve_part2(context: dict) -> None:
+    input_data = [line.split() for line in get_input_data(context).splitlines()]
+
+    reindeers = [
+        Reindeer(reindeer[0], int(reindeer[3]), int(reindeer[6]), int(reindeer[-2]))
+        for reindeer in input_data
+    ]
+
     most_points = calculate_reindeer_points(reindeers)
-    print(f'Part 1: {most_distance}')
-    print(f'Part 2: {most_points}')
+    print(f"Part 2: {most_points}")

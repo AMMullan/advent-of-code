@@ -1,11 +1,10 @@
 # https://adventofcode.com/2015/day/12
 
-import json
-from pathlib import Path
 
-INPUT_FILE = Path(__file__).resolve().parent / "day12.input"
-with open(INPUT_FILE) as input_file:
-    input_data = json.load(input_file)
+import json
+
+from aoc import get_input_data
+from registry import register
 
 
 def sum_integers(data, ignore_red=False):
@@ -27,8 +26,15 @@ def sum_integers(data, ignore_red=False):
     return recurse(data)
 
 
-part1 = sum_integers(input_data)
-print(f'{part1=}')
+@register(year=2015, day=12, part=1)
+def solve_part1(context: dict) -> None:
+    input_data = json.loads(get_input_data(context))
+    part1 = sum_integers(input_data)
+    print(f"{part1=}")
 
-part2 = sum_integers(input_data, True)
-print(f'{part2=}')
+
+@register(year=2015, day=12, part=2)
+def solve_part2(context: dict) -> None:
+    input_data = json.loads(get_input_data(context))
+    part2 = sum_integers(input_data, True)
+    print(f"{part2=}")

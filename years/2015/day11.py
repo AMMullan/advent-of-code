@@ -2,16 +2,18 @@
 
 import string
 
+from registry import register
+
 
 def split_string(seq, n):
-    return [''.join(item) for item in zip(*[seq[n:] for n in range(n)])]
+    return ["".join(item) for item in zip(*[seq[n:] for n in range(n)])]
 
 
 STRAIGHTS = split_string(string.ascii_lowercase, 3)
 
 
 def is_valid_puzzle(puzzle_input: str) -> bool:
-    if set(puzzle_input) & {'i', 'o', 'l'}:
+    if set(puzzle_input) & {"i", "o", "l"}:
         return False
 
     if all(item not in STRAIGHTS for item in split_string(puzzle_input, 3)):
@@ -27,20 +29,20 @@ def is_valid_puzzle(puzzle_input: str) -> bool:
 
 def get_next_password_iteration(s):
     if not s:
-        return 'a'
+        return "a"
 
     s = list(s)
     i = len(s) - 1
 
     while i >= 0:
-        if s[i] == 'z':
-            s[i] = 'a'
+        if s[i] == "z":
+            s[i] = "a"
             i -= 1
         else:
             s[i] = chr(ord(s[i]) + 1)
-            return ''.join(s)
+            return "".join(s)
 
-    return 'a' + ''.join(s)
+    return "a" + "".join(s)
 
 
 def get_next_password(puzzle_input: str):
@@ -51,7 +53,18 @@ def get_next_password(puzzle_input: str):
             return current_password
 
 
-part1 = get_next_password('cqjxjnds')
-print(part1)
-part2 = get_next_password(part1)
-print(part2)
+@register(year=2015, day=11, part=1)  # type: ignore
+def solve_part1(context: dict) -> str:
+    part1 = get_next_password("cqjxjnds")
+
+    if context:
+        print(part1)
+
+    return part1
+
+
+@register(year=2015, day=11, part=2)
+def solve_part2(context: dict) -> None:
+    if part1 := solve_part1({}):
+        part2 = get_next_password(part1)
+        print(part2)
