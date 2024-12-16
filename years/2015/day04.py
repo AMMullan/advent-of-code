@@ -18,13 +18,13 @@ def get_stuffer(input_data, zero_count):
         current_num += 1
 
 
-@register(year=2015, day=4, part=1)
+@register(year=2015, day=4, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context)
     print("Part 1:", get_stuffer(input_data, 5))
 
 
-@register(year=2015, day=4, part=2)
+@register(year=2015, day=4, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context)
     print("Part 1:", get_stuffer(input_data, 6))

@@ -6,7 +6,7 @@ from aoc import get_input_data
 from registry import register
 
 
-@register(year=2015, day=9, part=1)
+@register(year=2015, day=9, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
 
@@ -26,7 +26,7 @@ def solve_part1(context: dict) -> None:
     print(shortest)
 
 
-@register(year=2015, day=9, part=2)
+@register(year=2015, day=9, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
 

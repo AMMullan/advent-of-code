@@ -11,7 +11,7 @@ def encode_to_escaped_characters(input_string):
     return f'"{escaped_str}"'
 
 
-@register(year=2015, day=8, part=1)
+@register(year=2015, day=8, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
 
@@ -28,7 +28,7 @@ def solve_part1(context: dict) -> None:
     print(f"{part1_answer=}")
 
 
-@register(year=2015, day=8, part=2)
+@register(year=2015, day=8, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
 

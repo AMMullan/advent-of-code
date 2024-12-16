@@ -77,7 +77,7 @@ def solve_puzzle(input_data: list, wire_a_signal=None) -> int:
     return wires["a"].signal
 
 
-@register(year=2015, day=7, part=1)
+@register(year=2015, day=7, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = [line.strip().split() for line in get_input_data(context).splitlines()]
 
@@ -85,7 +85,7 @@ def solve_part1(context: dict) -> None:
     print(f"{part1_answer=}")  # 3176
 
 
-@register(year=2015, day=7, part=2)
+@register(year=2015, day=7, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = [line.strip().split() for line in get_input_data(context).splitlines()]
 

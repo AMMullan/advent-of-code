@@ -9,7 +9,7 @@ part1_regex = re.compile(r"mul\(([0-9]{1,3}),([0-9]{1,3})\)")
 part2_delete = re.compile(r"don\'t\(\).*?(do\(\)|$)")
 
 
-@register(year=2024, day=3, part=1)
+@register(year=2024, day=3, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context).replace("\n", "")
 
@@ -18,7 +18,7 @@ def solve_part1(context: dict) -> None:
     print(f"Part 1: {answer}")
 
 
-@register(year=2024, day=3, part=2)
+@register(year=2024, day=3, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context).replace("\n", "")
 

@@ -20,13 +20,13 @@ def deliveries(input_data, players):
     return len(houses)
 
 
-@register(year=2015, day=3, part=1)
+@register(year=2015, day=3, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context)
     print("Part 1:", deliveries(input_data, 1))
 
 
-@register(year=2015, day=3, part=2)
+@register(year=2015, day=3, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context)
     print("Part 2:", deliveries(input_data, 2))

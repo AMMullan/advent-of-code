@@ -53,7 +53,7 @@ def get_next_password(puzzle_input: str):
             return current_password
 
 
-@register(year=2015, day=11, part=1)  # type: ignore
+@register(year=2015, day=11, part=1, completed=True)  # type: ignore
 def solve_part1(context: dict) -> str:
     part1 = get_next_password("cqjxjnds")
 
@@ -63,7 +63,7 @@ def solve_part1(context: dict) -> str:
     return part1
 
 
-@register(year=2015, day=11, part=2)
+@register(year=2015, day=11, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     if part1 := solve_part1({}):
         part2 = get_next_password(part1)

@@ -45,7 +45,7 @@ def adjust_brightness(grid, action, start_coords, end_coords):
                         grid[row][col] += 2
 
 
-@register(year=2015, day=6, part=1)
+@register(year=2015, day=6, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     part1_grid = [[0 for _ in range(1000)] for _ in range(1000)]
 
@@ -68,7 +68,7 @@ def solve_part1(context: dict) -> None:
     print(part1_answer)
 
 
-@register(year=2015, day=6, part=2)
+@register(year=2015, day=6, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     part2_grid = [[0 for _ in range(1000)] for _ in range(1000)]
 

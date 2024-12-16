@@ -49,7 +49,7 @@ def calculate_reindeer_points(reindeers: list[Reindeer]) -> int:
     return max(scores)
 
 
-@register(year=2015, day=14, part=1)
+@register(year=2015, day=14, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
 
@@ -61,7 +61,7 @@ def solve_part1(context: dict) -> None:
     print(f"Part 1: {most_distance}")
 
 
-@register(year=2015, day=14, part=2)
+@register(year=2015, day=14, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
 

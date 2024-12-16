@@ -45,14 +45,14 @@ def get_round_winner(input_data) -> tuple:
     return (part1_total, part2_total)
 
 
-@register(year=2022, day=2, part=1)
+@register(year=2022, day=2, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
     part1 = get_round_winner(input_data)[0]
     print(f"Part 1: {part1}")
 
 
-@register(year=2022, day=2, part=2)
+@register(year=2022, day=2, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
     part2 = get_round_winner(input_data)[1]

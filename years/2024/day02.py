@@ -27,7 +27,7 @@ def is_safe(levels: list[int]) -> bool:
     return True
 
 
-@register(year=2024, day=2, part=1)
+@register(year=2024, day=2, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
 
@@ -40,7 +40,7 @@ def solve_part1(context: dict) -> None:
     print(f"Part 1: {safe}")
 
 
-@register(year=2024, day=2, part=2)
+@register(year=2024, day=2, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
 

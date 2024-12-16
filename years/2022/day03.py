@@ -15,7 +15,7 @@ def batch(iterable, n=1):
         yield iterable[ndx : min(ndx + n, length)]
 
 
-@register(year=2022, day=3, part=1)
+@register(year=2022, day=3, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
     part1_total = 0
@@ -32,7 +32,7 @@ def solve_part1(context: dict) -> None:
     print(f"Part 1: {part1_total}")
 
 
-@register(year=2022, day=3, part=2)
+@register(year=2022, day=3, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
     part2_total = 0

@@ -15,7 +15,7 @@ def find_word_in_direction(grid, word, start_r, start_c, dr, dc):
     )
 
 
-@register(year=2024, day=4, part=1)
+@register(year=2024, day=4, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     input_data = get_input_data(context).splitlines()
     word = "XMAS"

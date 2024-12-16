@@ -22,13 +22,13 @@ def look_and_say(count: int, start: int):
     return result
 
 
-@register(year=2015, day=10, part=1)
+@register(year=2015, day=10, part=1, completed=True)
 def solve_part1(context: dict) -> None:
     part1_sequences = look_and_say(40, start=1113222113)
     print(len(part1_sequences[-1]))
 
 
-@register(year=2015, day=10, part=2)
+@register(year=2015, day=10, part=2, completed=True)
 def solve_part2(context: dict) -> None:
     part2_sequences = look_and_say(50, start=1113222113)
     print(len(part2_sequences[-1]))
