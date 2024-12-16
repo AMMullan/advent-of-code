@@ -47,7 +47,16 @@ def main() -> None:
     if args.part:
         key = f"year{args.year}_day{args.day:02d}_part{args.part}"
         if key in registry:
-            registry[key](context | {"use_sample": args.sample, "part": args.part})
+            registry_item = registry[key]
+            print(registry_item)
+            registry_item["func"](
+                context
+                | {
+                    "use_sample": args.sample,
+                    "part": args.part,
+                    "completed": registry_item["completed"],
+                }
+            )
         else:
             print(f"No solution registered for {key}")
             sys.exit(1)
@@ -55,7 +64,16 @@ def main() -> None:
         for part_num in (1, 2):
             key = f"year{args.year}_day{args.day:02d}_part{part_num}"
             if key in registry:
-                registry[key](context | {"use_sample": args.sample, "part": part_num})
+                registry_item = registry[key]
+                print(registry_item)
+                registry_item["func"](
+                    context
+                    | {
+                        "use_sample": args.sample,
+                        "part": part_num,
+                        "completed": registry_item["completed"],
+                    }
+                )
             else:
                 print(f"No solution registered for {key}")
                 sys.exit(1)
