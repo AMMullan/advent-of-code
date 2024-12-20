@@ -16,7 +16,7 @@ def find_word_in_direction(grid, word, start_r, start_c, dr, dc):
 
 
 @register(year=2024, day=4, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
     word = "XMAS"
     directions = [
@@ -29,13 +29,13 @@ def solve_part1(context: dict) -> None:
         (-1, 1),  # Diagonal Up-Right
         (-1, -1),  # Diagonal Up-Left
     ]
-    answer = sum(
+
+    return sum(
         find_word_in_direction(input_data, word, r, c, dr, dc)
         for r in range(len(input_data))
         for c in range(len(input_data[0]))
         for dr, dc in directions
     )
-    print(f"Part 1: {answer}")
 
 
 @register(year=2024, day=4, part=2)

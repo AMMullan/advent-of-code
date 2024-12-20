@@ -16,7 +16,7 @@ def batch(iterable, n=1):
 
 
 @register(year=2022, day=3, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
     part1_total = 0
     for item in input_data:
@@ -29,11 +29,11 @@ def solve_part1(context: dict) -> None:
         for match in matches:
             part1_total += get_points(match)
 
-    print(f"Part 1: {part1_total}")
+    return part1_total
 
 
 @register(year=2022, day=3, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
     part2_total = 0
     for items in batch(input_data, 3):
@@ -41,4 +41,4 @@ def solve_part2(context: dict) -> None:
         for match in matches:
             part2_total += get_points(match)
 
-    print(f"Part 2: {part2_total}")
+    return part2_total

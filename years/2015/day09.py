@@ -7,7 +7,7 @@ from registry import register
 
 
 @register(year=2015, day=9, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     distances = {}
@@ -18,16 +18,14 @@ def solve_part1(context: dict) -> None:
         distances[frozenset([start, end])] = int(distance)
         locations.update([start, end])
 
-    shortest = min(
+    return min(
         sum(distances[frozenset([a, b])] for a, b in zip(route, route[1:]))
         for route in permutations(locations)
     )
-
-    print(shortest)
 
 
 @register(year=2015, day=9, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     distances = {}
@@ -38,9 +36,7 @@ def solve_part2(context: dict) -> None:
         distances[frozenset([start, end])] = int(distance)
         locations.update([start, end])
 
-    longest = max(
+    return max(
         sum(distances[frozenset([a, b])] for a, b in zip(route, route[1:]))
         for route in permutations(locations)
     )
-
-    print(longest)

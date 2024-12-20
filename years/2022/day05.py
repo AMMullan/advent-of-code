@@ -18,7 +18,7 @@ CARGO = [
 
 
 @register(year=2022, day=5, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> str:
     input_data = get_input_data(context).splitlines()[10:]
     cargo = deepcopy(CARGO)
 
@@ -33,12 +33,11 @@ def solve_part1(context: dict) -> None:
             removed = cargo[origin].popleft()
             cargo[target].appendleft(removed)
 
-    answer = "".join(item[0] for item in cargo)
-    print(f"Part 1: {answer}")
+    return "".join(item[0] for item in cargo)
 
 
 @register(year=2022, day=5, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> str:
     input_data = get_input_data(context).splitlines()[10:]
     cargo = deepcopy(CARGO)
 
@@ -54,5 +53,4 @@ def solve_part2(context: dict) -> None:
             cargo[origin].popleft()
             cargo[target].appendleft(move_items[count])
 
-    answer = "".join(item[0] for item in cargo)
-    print(f"Part 2: {answer}")
+    return "".join(item[0] for item in cargo)

@@ -6,7 +6,7 @@ from registry import register
 
 
 @register(year=2024, day=1, part=1, completed=True)
-def part1(context: dict) -> None:
+def part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     left_items = []
@@ -19,11 +19,11 @@ def part1(context: dict) -> None:
     right_sorted = [int(itm) for itm in sorted(right_items)]
     total = [abs(left - right) for left, right in zip(left_sorted, right_sorted)]
 
-    print(f"Part 1: {sum(total)}")
+    return sum(total)
 
 
 @register(year=2024, day=1, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
     left_items = []
     right_items = []
@@ -33,4 +33,4 @@ def solve_part2(context: dict) -> None:
 
     total = [int(item) * right_items.count(item) for item in left_items]
 
-    print(f"Part 2: {sum(total)}")
+    return sum(total)

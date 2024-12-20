@@ -5,7 +5,7 @@ from registry import register
 
 
 @register(year=2015, day=5, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     def has_subsequent_doubles(input_string):
@@ -32,11 +32,11 @@ def solve_part1(context: dict) -> None:
 
         part1_answer += 1
 
-    print("Part 1:", part1_answer)
+    return part1_answer
 
 
 @register(year=2015, day=5, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     def has_non_overlapping_repeats(input_string):
@@ -68,4 +68,4 @@ def solve_part2(context: dict) -> None:
         if nice:
             part2_answer += 1
 
-    print("Part 1:", part2_answer)
+    return part2_answer

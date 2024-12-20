@@ -46,14 +46,12 @@ def get_round_winner(input_data) -> tuple:
 
 
 @register(year=2022, day=2, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
-    part1 = get_round_winner(input_data)[0]
-    print(f"Part 1: {part1}")
+    return get_round_winner(input_data)[0]
 
 
 @register(year=2022, day=2, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
-    part2 = get_round_winner(input_data)[1]
-    print(f"Part 2: {part2}")
+    return get_round_winner(input_data)[1]

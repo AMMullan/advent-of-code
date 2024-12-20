@@ -7,7 +7,7 @@ from registry import register
 
 
 @register(year=2015, day=2, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     part_1 = 0
@@ -22,11 +22,11 @@ def solve_part1(context: dict) -> None:
         ]
         part_1 += sum(sides) + int(min(sides) / 2)
 
-    print("Part 1:", part_1)
+    return part_1
 
 
 @register(year=2015, day=2, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     part_2 = 0
@@ -40,4 +40,4 @@ def solve_part2(context: dict) -> None:
 
         part_2 += dimensions + product
 
-    print("Part 2:", part_2)
+    return part_2

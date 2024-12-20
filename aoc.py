@@ -10,9 +10,9 @@ def get_input_data(context: dict) -> str:
     """Returns the input file path based on the context and sample flag."""
     suffix = "-sample.txt" if context.get("use_sample", False) else "-input.txt"
 
-    file = Path(f"inputs/{context['year']}/day{context['day']:02d}{suffix}")
+    file = Path(f"inputs/{context['year']}/day{context['day']}{suffix}")
     if not file.exists():
-        print(f"Missing Input Data - {str(file)}")
+        print(f"Missing Input Data - {file}")
         sys.exit(1)
 
     return file.read_text().strip()
@@ -31,25 +31,27 @@ def main() -> None:
     parser.add_argument("-s", "--sample", action="store_true")
     args = parser.parse_args()
 
-    if args.part and args.part not in [1, 2]:
+    if args.part and args.part not in (1, 2):
         print("Invalid Part Specified")
         sys.exit(1)
 
+    args_day_padded = f"{args.day:02d}"
+
     # Dynamically import the corresponding year module
     try:
-        importlib.import_module(f"years.{args.year}.day{args.day:02d}")
+        importlib.import_module(f"years.{args.year}.day{args_day_padded}")
     except ModuleNotFoundError:
         print(f"No solutions implemented for year {args.year}, day {args.day}")
         sys.exit(1)
 
     # Run the specified part or both parts
-    context = {"year": args.year, "day": args.day}
+    context = {"year": args.year, "day": args_day_padded}
+
     if args.part:
-        key = f"year{args.year}_day{args.day:02d}_part{args.part}"
+        key = f"year{args.year}_day{args_day_padded}_part{args.part}"
         if key in registry:
             registry_item = registry[key]
-            print(registry_item)
-            registry_item["func"](
+            rv = registry_item["func"](
                 context
                 | {
                     "use_sample": args.sample,
@@ -57,22 +59,27 @@ def main() -> None:
                     "completed": registry_item["completed"],
                 }
             )
+            print(
+                f"{args.year}-{args_day_padded} // Part {args.part}: {rv} (Completed: {registry_item['completed']})"
+            )
         else:
             print(f"No solution registered for {key}")
             sys.exit(1)
     else:
         for part_num in (1, 2):
-            key = f"year{args.year}_day{args.day:02d}_part{part_num}"
+            key = f"year{args.year}_day{args_day_padded}_part{part_num}"
             if key in registry:
                 registry_item = registry[key]
-                print(registry_item)
-                registry_item["func"](
+                rv = registry_item["func"](
                     context
                     | {
                         "use_sample": args.sample,
                         "part": part_num,
                         "completed": registry_item["completed"],
                     }
+                )
+                print(
+                    f"{args.year}-{args_day_padded} // Part {part_num}: {rv} (Completed: {registry_item['completed']})"
                 )
             else:
                 print(f"No solution registered for {key}")

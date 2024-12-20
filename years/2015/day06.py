@@ -46,7 +46,7 @@ def adjust_brightness(grid, action, start_coords, end_coords):
 
 
 @register(year=2015, day=6, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     part1_grid = [[0 for _ in range(1000)] for _ in range(1000)]
 
     input_data = get_input_data(context).splitlines()
@@ -64,12 +64,11 @@ def solve_part1(context: dict) -> None:
 
         transform_grid(part1_grid, action, start_pair, end_pair)
 
-    part1_answer = sum(sum(row) for row in part1_grid)
-    print(part1_answer)
+    return sum(sum(row) for row in part1_grid)
 
 
 @register(year=2015, day=6, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     part2_grid = [[0 for _ in range(1000)] for _ in range(1000)]
 
     input_data = get_input_data(context).splitlines()
@@ -87,5 +86,4 @@ def solve_part2(context: dict) -> None:
 
         adjust_brightness(part2_grid, action, start_pair, end_pair)
 
-    part2_answer = sum(sum(row) for row in part2_grid)
-    print(part2_answer)
+    return sum(sum(row) for row in part2_grid)

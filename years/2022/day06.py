@@ -6,7 +6,7 @@ from registry import register
 
 
 @register(year=2022, day=6, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context)
     count = 4
 
@@ -21,11 +21,11 @@ def solve_part1(context: dict) -> None:
         answer = marker + count
         break
 
-    print(f"Part 1: {answer}")
+    return answer
 
 
 @register(year=2022, day=6, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context)
     count = 14
 
@@ -40,4 +40,4 @@ def solve_part2(context: dict) -> None:
         answer = marker + count
         break
 
-    print(f"Part 2: {answer}")
+    return answer

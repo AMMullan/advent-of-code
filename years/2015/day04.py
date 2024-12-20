@@ -6,7 +6,7 @@ from aoc import get_input_data
 from registry import register
 
 
-def get_stuffer(input_data, zero_count):
+def get_stuffer(input_data, zero_count) -> int:
     current_num = 0
     while True:
         result = hashlib.md5(f"{input_data}{str(current_num)}".encode())
@@ -19,12 +19,12 @@ def get_stuffer(input_data, zero_count):
 
 
 @register(year=2015, day=4, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context)
-    print("Part 1:", get_stuffer(input_data, 5))
+    return get_stuffer(input_data, 5)
 
 
 @register(year=2015, day=4, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context)
-    print("Part 1:", get_stuffer(input_data, 6))
+    return get_stuffer(input_data, 6)

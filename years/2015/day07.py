@@ -78,17 +78,15 @@ def solve_puzzle(input_data: list, wire_a_signal=None) -> int:
 
 
 @register(year=2015, day=7, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = [line.strip().split() for line in get_input_data(context).splitlines()]
 
-    part1_answer = solve_puzzle(input_data)
-    print(f"{part1_answer=}")  # 3176
+    return solve_puzzle(input_data)
 
 
 @register(year=2015, day=7, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = [line.strip().split() for line in get_input_data(context).splitlines()]
 
     part1_answer = solve_puzzle(input_data)
-    part2_answer = solve_puzzle(input_data, part1_answer)
-    print(f"{part2_answer=}")  # 14710
+    return solve_puzzle(input_data, part1_answer)

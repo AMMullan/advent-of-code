@@ -28,7 +28,7 @@ def is_safe(levels: list[int]) -> bool:
 
 
 @register(year=2024, day=2, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     safe = 0
@@ -37,11 +37,11 @@ def solve_part1(context: dict) -> None:
         if is_safe(levels):
             safe += 1
 
-    print(f"Part 1: {safe}")
+    return safe
 
 
 @register(year=2024, day=2, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     safe = 0
@@ -52,4 +52,4 @@ def solve_part2(context: dict) -> None:
         elif any(is_safe(new_list) for new_list in generate_combinations(levels)):
             safe += 1
 
-    print(f"Part 2: {safe}")
+    return safe

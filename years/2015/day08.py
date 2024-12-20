@@ -12,7 +12,7 @@ def encode_to_escaped_characters(input_string):
 
 
 @register(year=2015, day=8, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     items = []
@@ -24,12 +24,11 @@ def solve_part1(context: dict) -> None:
         decoded.append(len(codecs.decode(item[1:-1], "unicode_escape")))
         encoded.append(len(encode_to_escaped_characters(item)))
 
-    part1_answer = sum(items) - sum(decoded)
-    print(f"{part1_answer=}")
+    return sum(items) - sum(decoded)
 
 
 @register(year=2015, day=8, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     items = []
@@ -41,5 +40,4 @@ def solve_part2(context: dict) -> None:
         decoded.append(len(codecs.decode(item[1:-1], "unicode_escape")))
         encoded.append(len(encode_to_escaped_characters(item)))
 
-    part2_answer = sum(encoded) - sum(items)
-    print(f"{part2_answer=}")
+    return sum(encoded) - sum(items)

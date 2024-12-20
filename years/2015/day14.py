@@ -50,19 +50,18 @@ def calculate_reindeer_points(reindeers: list[Reindeer]) -> int:
 
 
 @register(year=2015, day=14, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
 
     reindeers = [
         Reindeer(reindeer[0], int(reindeer[3]), int(reindeer[6]), int(reindeer[-2]))
         for reindeer in input_data
     ]
-    most_distance = calculate_reindeer_speed(reindeers)
-    print(f"Part 1: {most_distance}")
+    return calculate_reindeer_speed(reindeers)
 
 
 @register(year=2015, day=14, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = [line.split() for line in get_input_data(context).splitlines()]
 
     reindeers = [
@@ -70,5 +69,4 @@ def solve_part2(context: dict) -> None:
         for reindeer in input_data
     ]
 
-    most_points = calculate_reindeer_points(reindeers)
-    print(f"Part 2: {most_points}")
+    return calculate_reindeer_points(reindeers)

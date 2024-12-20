@@ -64,7 +64,6 @@ def solve_part1(context: dict) -> str:
 
 
 @register(year=2015, day=11, part=2, completed=True)
-def solve_part2(context: dict) -> None:
-    if part1 := solve_part1({}):
-        part2 = get_next_password(part1)
-        print(part2)
+def solve_part2(context: dict) -> str:
+    part1 = solve_part1({})
+    return get_next_password(part1)

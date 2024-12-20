@@ -27,14 +27,12 @@ def sum_integers(data, ignore_red=False):
 
 
 @register(year=2015, day=12, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = json.loads(get_input_data(context))
-    part1 = sum_integers(input_data)
-    print(f"{part1=}")
+    return sum_integers(input_data)
 
 
 @register(year=2015, day=12, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = json.loads(get_input_data(context))
-    part2 = sum_integers(input_data, True)
-    print(f"{part2=}")
+    return sum_integers(input_data, True)

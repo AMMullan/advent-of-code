@@ -10,19 +10,18 @@ part2_delete = re.compile(r"don\'t\(\).*?(do\(\)|$)")
 
 
 @register(year=2024, day=3, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).replace("\n", "")
 
     program_input = [(int(x), int(y)) for x, y in part1_regex.findall(input_data)]
-    answer = sum(x * y for x, y in program_input)
-    print(f"Part 1: {answer}")
+    return sum(x * y for x, y in program_input)
 
 
 @register(year=2024, day=3, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context).replace("\n", "")
 
     actual_str = part2_delete.sub("", input_data)
     program_input = [(int(x), int(y)) for x, y in part1_regex.findall(actual_str)]
-    answer = sum(x * y for x, y in program_input)
-    print(f"Part 2: {answer}")
+
+    return sum(x * y for x, y in program_input)

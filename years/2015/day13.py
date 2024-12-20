@@ -31,7 +31,7 @@ guests = set()
 
 
 @register(year=2015, day=13, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context).splitlines()
 
     for line in input_data:
@@ -42,10 +42,10 @@ def solve_part1(context: dict) -> None:
 
         happiness[(person1, person2)] = units
 
-    print(f"Part 1: {get_most_happy(guests, happiness)}")
+    return get_most_happy(guests, happiness)
 
 
 @register(year=2015, day=13, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     guests.add("Allan")
-    print(f"Part 2: {get_most_happy(guests, happiness)}")
+    return get_most_happy(guests, happiness)

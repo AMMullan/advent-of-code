@@ -6,7 +6,7 @@ registry: dict[str, dict[str, Any]] = {}
 
 def register(
     year: int, day: int, part: int, completed: bool = False
-) -> Callable[[Callable[[dict], None]], Callable[[dict], None]]:
+) -> Callable[[Callable[[dict], Any]], Callable[[dict], Any]]:
     """Decorator to register a solution for a specific year, day, and part."""
 
     def decorator(func: Callable[[dict], None]) -> Callable[[dict], None]:

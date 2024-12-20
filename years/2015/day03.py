@@ -21,12 +21,12 @@ def deliveries(input_data, players):
 
 
 @register(year=2015, day=3, part=1, completed=True)
-def solve_part1(context: dict) -> None:
+def solve_part1(context: dict) -> int:
     input_data = get_input_data(context)
-    print("Part 1:", deliveries(input_data, 1))
+    return deliveries(input_data, 1)
 
 
 @register(year=2015, day=3, part=2, completed=True)
-def solve_part2(context: dict) -> None:
+def solve_part2(context: dict) -> int:
     input_data = get_input_data(context)
-    print("Part 2:", deliveries(input_data, 2))
+    return deliveries(input_data, 2)
